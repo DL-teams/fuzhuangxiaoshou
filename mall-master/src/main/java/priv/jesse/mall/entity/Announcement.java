@@ -20,11 +20,11 @@ public class Announcement implements Serializable {
     private String announcementValue;
 
     @Column
-    @JsonFormat(locale = "zh", timezone = "GMT", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date announcementCreateTime;
 
     @Column
-    @JsonFormat(locale = "zh", timezone = "GMT", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date announcementLastModifyTime;
 
     public Long getAnnouncementId() {
