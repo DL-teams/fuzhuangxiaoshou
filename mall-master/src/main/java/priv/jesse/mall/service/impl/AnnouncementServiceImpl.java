@@ -1,5 +1,6 @@
 package priv.jesse.mall.service.impl;
 
+import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,11 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     @Override
     public Page<Announcement> findAll(Pageable pageable) {
         return announcementDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Announcement> findAll() {
+        return announcementDao.findAll();
     }
 
     @Override
