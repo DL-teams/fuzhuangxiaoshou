@@ -97,6 +97,7 @@
         }
         var contents = "";
         $("#announcement").click(function (){
+            contents = "";
             //加载分类
             $.get("announcement/get.do", function (data) {
                 console.log(data)
