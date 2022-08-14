@@ -153,3 +153,15 @@ CREATE TABLE `user` (
 INSERT INTO `user` VALUES ('1', 'wew6698888', '89****96@qq.com', 'skywalker', '123456', '17688970006', 'hfb');
 INSERT INTO `user` VALUES ('2', '1235645645646', '89***96@qq.com', 'hfb', '123456', '18645954845', 'jesse');
 INSERT INTO `user` VALUES ('3', '江西省 吉安市 泰和县', '8976677657@qq.com', '曾涛涛', '123456', '12345678941', 'ztt');
+
+-- announcement
+DROP TABLE IF EXISTS `announcement`;
+CREATE TABLE `announcement` (
+    `announcement_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '公告编号',
+    `announcement_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告内容',
+    `announcement_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+    `announcement_last_modify_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`announcement_id`) USING BTREE
+) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
