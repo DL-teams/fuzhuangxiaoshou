@@ -57,7 +57,7 @@
 							</div>
 							<div class="form-actions">
 								<button type="button" onclick="update()" class="btn blue"><i class="fa fa-check"></i>确定</button>&emsp;
-								<button type="button" id="back" class="btn"><i class="fa fa-times"></i>返回</button>
+								<button type="button" onclick="javascript:window.location.href='toList.html';" id="back" class="btn"><i class="fa fa-times"></i>返回</button>
 							</div>
 						</form>
 					</div>
@@ -78,11 +78,6 @@
 		
 		<script type="text/javascript">
             //<![CDATA[
-			$(function(){
-				$("#back").click(function(){
-					history.back();
-				});
-			});
 			
 			function update(){
 				if(!confirm("确定更改公告信息？")){

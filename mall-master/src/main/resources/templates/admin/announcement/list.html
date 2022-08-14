@@ -40,7 +40,8 @@
                     公告列表
                 </div>
                 <div class="tools">
-                    <button onclick="window.location.href='toAdd.html';" class="btn mini"><i class="fa fa-plus"></i>添加</button>
+                    <button onclick="window.location.href='toAdd.html';" class="btn mini"><i class="fa fa-plus"></i>添加
+                    </button>
                 </div>
             </div>
             <div class="portlet-body">
@@ -125,81 +126,39 @@
             tr.append($("<td></td>").text(data[i].announcementValue));
             tr.append($("<td></td>").text(data[i].announcementCreateTime == null ? '' : data[i].announcementCreateTime));
             tr.append($("<td></td>")
-                .append($('<button style="margin-right:20px;" class="btn mini green" onclick="edit('+data[i].announcementId+')"><i class="fa fa-edit"></i> 编辑</button>'))
-                .append($('<button class="btn mini red" onclick="del('+(data[i].announcementId)+',this)"><i class="fa fa-trash"></i> 删除</button>')));
+                .append($('<button style="margin-right:20px;" class="btn mini green" onclick="edit(' + data[i].announcementId + ')"><i class="fa fa-edit"></i> 编辑</button>'))
+                .append($('<button class="btn mini red" onclick="del(' + (data[i].announcementId) + ',this)"><i class="fa fa-trash"></i> 删除</button>')));
             tbody.append(tr);
             tr.fadeIn();
         }
     }
 
-    function edit(id){
-        $("#mainFrame",window.parent.document).attr("src","announcement/toEdit.html?id="+id);
+    function edit(id) {
+        $("#mainFrame", window.parent.document).attr("src", "announcement/toEdit.html?id=" + id);
     }
 
-    function send(oid, btn) {
-        if (!oid) {
-            alert("订单编号为空");
+    function del(id, btn) {
+        if (!confirm("是否删除id为" + id + "的公告？")) {
             return;
         }
         $.ajax({
-            url: "send.do?id=" + oid,
+            url: "del.do?id=" + id,
             type: "get",
             success: function (result) {
                 if (result.state == 0) {
-                    alert("发货成功！");
-                    $(btn).parent().html("等待收货");
-                } else {
-                    alert(result.message);
-                }
-            },
-            error: function () {
-                alert("连接错误！");
-            }
-        });
-    }
-
-    function back(oid, btn) {
-        if (!oid) {
-            alert("订单编号为空");
-            return;
-        }
-        $.ajax({
-            url: "back.do?id=" + oid,
-            type: "get",
-            success: function (result) {
-                if (result.state == 0) {
-                    alert("退货成功！");
-                    $(btn).parent().html("退货完成");
-                } else {
-                    alert(result.message);
-                }
-            },
-            error: function () {
-                alert("连接错误！");
-            }
-        });
-    }
-    function del(id,btn){
-        if(!confirm("是否删除id为"+id+"的公告？")){
-            return;
-        }
-        $.ajax({
-            url:"del.do?id="+id,
-            type:"get",
-            success:function(result){
-                if(result.state==0){
-                    if(result.data==true){
+                    if (result.data == true) {
                         alert("删除成功！");
                         $(btn).parent().parent().fadeOut();
-                    }else{
+                    } else {
                         alert("删除失败！");
                     }
-                }else{
+                } else {
                     alert(result.message);
                 }
             }
         });
     }
+
     //    ]]>
 </script>
 </body>
